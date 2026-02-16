@@ -1,0 +1,39 @@
+.start-screen-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+.touch-to-order-btn{
+  margin-bottom: 137px;
+  width: 67%;
+}
+
+.order-here {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px; 
+}
+
+.order-here span {
+  font-size: 16.87rem; 
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 900;
+  color: white;
+  line-height: 0.9;
+  letter-spacing: 0.05em;
+}
+
+.order-here .order{
+  margin-right: .5em;
+}
+
+.order-here .here{
+  margin-left: 1.05em;
+}

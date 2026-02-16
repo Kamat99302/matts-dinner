@@ -1,0 +1,20 @@
+html, body, div, span, button, input, textarea {
+  caret-color: transparent; /* Cache le curseur de texte */
+}
+
+#root {
+  width: 1080px;
+  height: 1920px;
+  margin: 0 auto;
+  overflow: hidden;
+  text-align: center;
+  background: white;
+  transform-origin: top center;
+}
+
+@media (max-height: 1920px) {
+  #root {
+    transform: scale(0.4); /* ajuste selon ton écran */
+  }
+}
+
