@@ -1,0 +1,12 @@
+.category-tab{
+    margin-top: 4em;
+}
+
+
+.menu-items-container{
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 520px 520px;
+    grid-template-rows: 550px 550px;
+    margin-top: 8em;
+}
