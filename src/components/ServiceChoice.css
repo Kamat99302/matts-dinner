@@ -9,7 +9,7 @@
     font-size: 4rem;
     align-items: center;
     justify-content: center;
-    margin-top: 1.8em;
+    margin-top: 1.5em;
 }
 
 .options-container{
@@ -56,7 +56,7 @@
 
 .language-selector-container{
     position: absolute;
-    right: 30px;
-    bottom: 30px;
+    right: 35px;
+    bottom: 43px;
    
 }

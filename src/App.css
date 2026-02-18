@@ -14,7 +14,7 @@ html, body, div, span, button, input, textarea {
 
 @media (max-height: 1920px) {
   #root {
-    transform: scale(0.4); /* ajuste selon ton écran */
+    transform: scale(0.36); /* ajuste selon ton écran */
   }
 }
 
