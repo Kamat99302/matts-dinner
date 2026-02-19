@@ -1,5 +1,7 @@
 html, body, div, span, button, input, textarea {
   caret-color: transparent; /* Cache le curseur de texte */
+  overflow: hidden;
+
 }
 
 #root {

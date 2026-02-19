@@ -5,10 +5,7 @@ import { ProductCard } from 'matts-dinner-component-library'
 import { LanguageSelector } from 'matts-dinner-component-library'
 import { Button } from 'matts-dinner-component-library'
 import cartIcon from './../assets/images/cart.webp'
-import mattsBurger from './../assets/images/Burgers/matts-burger.jpg'
-import fishBurger from './../assets/images/Burgers/fish-burger.webp'
-import doubleBeef from './../assets/images/Burgers/double-beef.jpg'
-import signatureBurger from './../assets/images/Burgers/signature-burger.jpg'
+import { menuData } from '../data/menuData'
 
 export default function Menu(){
     return(
@@ -18,37 +15,19 @@ export default function Menu(){
                 <CategoryTab activeIndex={0}></CategoryTab>
             </div>
             <div className='menu-items-container'>
-                <ProductCard
-                    includeBadge={true}
-                    badgeColor='yellow'
-                    badgeVariant='square'
-                    showIcon={true}
-                    badgeText='Popular'
-                    img={mattsBurger}
-                    productName= 'Matts Burger'
-                    productPrice= '4.90€'/>
-                    
+                {menuData.burgers.map((burger)=>(
                     <ProductCard
-                    includeBadge={true}
-                    badgeColor='green'
-                    badgeVariant='square'
-                    showIcon={true}
-                    badgeText='New'
-                    img={doubleBeef}
-                    productName= 'Double Beef'
-                    productPrice= '5.90€'/>
-
-                    <ProductCard
-                    includeBadge={false}
-                    img={signatureBurger}
-                    productName= 'Signature Burger'
-                    productPrice= '4.50€'/>
-
-                    <ProductCard
-                    includeBadge={false}
-                    img={fishBurger}
-                    productName= 'Fish Burger'
-                    productPrice= '5.90€'/>
+                    key={burger.id}
+                    includeBadge={burger.badge.include}
+                    badgeColor={burger.badge.color}
+                    badgeVariant={burger.badge.variant}
+                    showIcon={burger.badge.showIcon}
+                    badgeText={burger.badge.text}
+                    img={burger.img}
+                    productName= {burger.name}
+                    productPrice= {burger.price}/>
+                ))}
+                
             </div>
             <footer>
 
