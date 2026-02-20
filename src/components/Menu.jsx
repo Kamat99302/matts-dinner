@@ -1,13 +1,16 @@
 import './Menu.css'
+import { useNavigate } from 'react-router-dom'
 import { Header } from 'matts-dinner-component-library'
 import { CategoryTab } from 'matts-dinner-component-library'
 import { ProductCard } from 'matts-dinner-component-library'
-import { LanguageSelector } from 'matts-dinner-component-library'
-import { Button } from 'matts-dinner-component-library'
-import cartIcon from './../assets/images/cart.webp'
+import { CartFooter } from 'matts-dinner-component-library'
 import { menuData } from '../data/menuData'
 
+
+
 export default function Menu(){
+    const navigate = useNavigate()
+
     return(
         <div className='menu-page-container'>
             <Header showNavIcons={true}></Header>
@@ -16,7 +19,8 @@ export default function Menu(){
             </div>
             <div className='menu-items-container'>
                 {menuData.burgers.map((burger)=>(
-                    <ProductCard
+                    <ProductCard 
+                    onClick={()=>navigate('/product-detail')}
                     key={burger.id}
                     includeBadge={burger.badge.include}
                     badgeColor={burger.badge.color}
@@ -29,23 +33,8 @@ export default function Menu(){
                 ))}
                 
             </div>
-            <footer>
-
-                <div className='cart-footer-section'>
-                    <div className='cart-footer-info'>
-                        <img src={cartIcon} className='cart-footer-icon'/>
-                        <span className='cart-footer-nb-items'><span className='cart-footer-nb-item-number'>2</span> ITEM(S) • </span>
-                        <span className='cart-footer-price'>10.75€</span>
-                    </div>
-                    <div className='view-cart-btn'>
-                        <Button variant="primary-white" size='small'>VIEW CART</Button>
-                    </div>
-                </div>
-
-                <div className='language-selector-container'>
-                    <LanguageSelector></LanguageSelector>
-                </div>
-            </footer>
+            <CartFooter variant='summary'></CartFooter>
+           
         </div>
     )
 }

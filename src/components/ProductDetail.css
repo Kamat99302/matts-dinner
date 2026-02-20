@@ -1,0 +1,12 @@
+.product-detail-page-container{
+    display: flex;
+    flex-direction: column;
+    height: 1920px; 
+}
+
+
+.product-hero-container{
+    margin-top: .6em;
+}
+
+
