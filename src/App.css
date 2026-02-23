@@ -12,6 +12,7 @@ html, body, div, span, button, input, textarea {
   text-align: center;
   background: white;
   transform-origin: top center;
+
 }
 
 @media (max-height: 1920px) {

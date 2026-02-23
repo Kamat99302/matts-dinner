@@ -4,9 +4,45 @@
     height: 1920px; 
 }
 
-
-.product-hero-container{
-    margin-top: .6em;
+.product-hero-wrapper{
+    margin-top: 1.2em;
+    border-bottom: 1px solid #000;  
 }
 
+.product-details{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.product-details-name-price{
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    font-size: 2.63rem;
+    font-weight: 600;
+    gap: 12rem;
+    margin-top: .5em;
+}
+
+.product-details-ingredients{
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    color: #808080;
+    font-size: 1.68rem;
+    font-weight: 600;
+    
+}
+
+.checkbox-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: .6rem;
+}
+
+.product-details-add-to-cart-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.4em;
+}
 
