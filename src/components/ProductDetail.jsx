@@ -7,6 +7,8 @@ import { QuantitySelector } from 'matts-dinner-component-library'
 import { Button } from 'matts-dinner-component-library'
 import mattsBurger from './../assets/images/Burgers/matts-burger.jpg'
 
+
+
 export default function ProductDetail(){
     return(
         <div className='product-detail-page-container'>
