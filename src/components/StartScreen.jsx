@@ -4,7 +4,6 @@ import { Button } from 'matts-dinner-component-library'
 import { useNavigate } from 'react-router-dom'
 export default function StartScreen(){
     const navigate = useNavigate()
-   
     return(
         <div
         style={{backgroundImage: `url(${startScreenBg})`}}

@@ -16,7 +16,7 @@ function App() {
       <Route path='/' element={<StartScreen />} />
       <Route path='/service-choice' element={<ServiceChoice />}/>
       <Route path='/menu' element={<Menu />}/>
-      <Route path='/product-detail' element={<ProductDetail />}/>
+      <Route path='/product-detail/:id' element={<ProductDetail />}/>
     </Routes>
   )
 }
