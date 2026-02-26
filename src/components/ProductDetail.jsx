@@ -6,15 +6,34 @@ import { Checkbox } from 'matts-dinner-component-library'
 import { QuantitySelector } from 'matts-dinner-component-library'
 import { Button } from 'matts-dinner-component-library'
 import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 import { menuData } from '../data/menuData'
+import addBtn from '../assets/images/add-button.png'
+import removeBtn from '../assets/images/remove-button.png'
 
 
 export default function ProductDetail(){
+    const [quantity, setQuantity] = useState(1)
     const { id } = useParams()
     const allItems = Object.values(menuData) //transforme l'objet menuData en tableau. Crée un tableau de tableaux
                     .flat() //applatis en tableau simple
     console.log(allItems)
     const product = allItems.find(item=>item.id === Number(id)) //cherche les produits correspondant à l'id de l'url
+
+
+    function incrementQuantity(){
+        if (quantity === 10){
+            return
+        }
+        setQuantity(prev=>prev + 1)
+    }
+
+    function decrementQuantity(){
+        if (quantity === 1){
+            return
+        }
+        setQuantity(prev=>prev - 1)
+    }
     return(
         <div className='product-detail-page-container'>
             <Header showNavIcons={true}></Header>
@@ -27,13 +46,13 @@ export default function ProductDetail(){
                     <span>{product.price}</span>
                 </div>
                 <div className='product-details-ingredients'>
-                    <span>Steak, cheddar, lettuce...</span>
+                    <span>{product.ingredients}</span>
                 </div>
                 <div className='checkbox-container'> 
                     {product.type && <Checkbox type={product.type}></Checkbox>}
                 </div>
             </div>
-            <QuantitySelector></QuantitySelector>
+            <QuantitySelector onDecrement={decrementQuantity} onIncrement={incrementQuantity} quantity={quantity} imgRemove={removeBtn} imgAdd={addBtn} ></QuantitySelector>
             
             <div className='product-details-add-to-cart-button'> 
                 <Button variant='primary-black' size='medium-inter' >ADD TO CART {product.price}</Button>
