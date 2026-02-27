@@ -35,7 +35,7 @@ export default function Menu(){
                 ))}
                 
             </div>
-            <CartFooter variant='summary'></CartFooter>
+            <CartFooter onViewCart={()=>navigate('/cart')} variant='summary'></CartFooter>
            
         </div>
     )

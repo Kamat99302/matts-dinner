@@ -40,9 +40,11 @@
     margin-top: .6rem;
 }
 
+
 .product-details-add-to-cart-button{
     display: flex;
     justify-content: center;
+
     margin-top: 1.4em;
 }
 

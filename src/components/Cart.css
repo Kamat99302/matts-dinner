@@ -1,0 +1,24 @@
+.cart-page-container{
+    display: flex;
+    flex-direction: column;
+    height: 1920px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    margin-top: 1.5rem;
+    font-size: 6.25rem;
+}
+
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 2em;
+}
+
+
+

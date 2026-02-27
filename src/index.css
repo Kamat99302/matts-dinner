@@ -10,3 +10,6 @@
   user-select: none; /* Enleve le curseur blanc sur les cotés */
 }
 
+*, *::before, *::after {
+  box-sizing: border-box; /* Crucial pour que les paddings ne déforment pas les cartes */
+}

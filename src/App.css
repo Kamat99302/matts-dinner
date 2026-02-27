@@ -1,4 +1,4 @@
-html, body, div, span, button, input, textarea {
+html, body, button, input, textarea {
   caret-color: transparent; /* Cache le curseur de texte */
   overflow: hidden;
 
@@ -9,7 +9,6 @@ html, body, div, span, button, input, textarea {
   height: 1920px;
   margin: 0 auto;
   overflow: hidden;
-  text-align: center;
   background: white;
   transform-origin: top center;
 
