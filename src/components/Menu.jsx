@@ -15,7 +15,7 @@ export default function Menu(){
     
     return(
         <div className='menu-page-container'>
-            <Header showNavIcons={true}></Header>
+            <Header onGoBack={()=>navigate('/service-choice')} showNavIcons={true}></Header>
             <div className='category-tab'>
                 <CategoryTab onCategoryClick={setActiveCategory} activeIndex={activeIndex} onIndexClick={setActiveIndex} ></CategoryTab>
             </div>

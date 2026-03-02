@@ -5,6 +5,7 @@
 }
 
 .service-choice-container h2{
+    display: flex;
     font-family: 'Inter', sans-serif;
     font-size: 4rem;
     align-items: center;
@@ -54,7 +55,7 @@
     margin-top: .3em;
 }
 
-.service-choice-language-selector-container{
+.bottom-page-language-selector-container{
     position: absolute;
     right: 35px;
     bottom: 43px;

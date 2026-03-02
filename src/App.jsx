@@ -7,6 +7,7 @@ import ProductDetail from './components/ProductDetail';
 import Cart from './components/Cart';
 import 'matts-dinner-component-library/dist/matts-dinner-component-library.css';
 import './App.css'
+import Confirmation from './components/Confirmation';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path='/menu' element={<Menu />}/>
       <Route path='/product-detail/:id' element={<ProductDetail />}/>
       <Route path='/cart' element={<Cart />}></Route>
+      <Route path='/confirmation' element={<Confirmation />}></Route>
     </Routes>
   )
 }

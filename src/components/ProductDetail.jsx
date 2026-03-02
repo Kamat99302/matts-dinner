@@ -36,7 +36,7 @@ export default function ProductDetail(){
     }
     return(
         <div className='product-detail-page-container'>
-            <Header showNavIcons={true}></Header>
+            <Header onGoBack={()=>navigate('/menu')} showNavIcons={true}></Header>
             <div className='product-hero-wrapper'>
                 <ProductHero img={product.img} productName={product.name}/>
             </div>

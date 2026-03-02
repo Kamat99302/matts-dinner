@@ -24,7 +24,7 @@ export default function ServiceChoice(){
                 </div>
             </div>
         </div>
-        <div className='service-choice-language-selector-container'>
+        <div className='bottom-page-language-selector-container'>
             <LanguageSelector></LanguageSelector>
         </div>
         </>
