@@ -11,9 +11,15 @@ import { menuData } from '../data/menuData'
 import { useNavigate } from 'react-router-dom'
 import addBtn from '../assets/images/add-button.png'
 import removeBtn from '../assets/images/remove-button.png'
+import { useCart } from '../Context/CartContext'
 
 
 export default function ProductDetail(){
+    const {cartItems, addToCart} = useCart()
+    const nbItems = cartItems.reduce((total, item)=> total + item.quantity,0)
+    const totalPrice = cartItems.reduce((total,item)=>{
+        return total + parseFloat(item.price) * item.quantity
+    },0)
     const navigate = useNavigate()
     const [quantity, setQuantity] = useState(1)
     const { id } = useParams()
@@ -22,7 +28,7 @@ export default function ProductDetail(){
     const product = allItems.find(item=>item.id === Number(id)) //cherche les produits correspondant à l'id de l'url
 
     function incrementQuantity(){
-        if (quantity === 10){
+        if (quantity === 5){
             return
         }
         setQuantity(prev=>prev + 1)
@@ -36,7 +42,7 @@ export default function ProductDetail(){
     }
     return(
         <div className='product-detail-page-container'>
-            <Header onGoBack={()=>navigate('/menu')} showNavIcons={true}></Header>
+            <Header onViewCart={()=>navigate('/cart')} onGoBack={()=>navigate('/menu')} showNavIcons={true}></Header>
             <div className='product-hero-wrapper'>
                 <ProductHero img={product.img} productName={product.name}/>
             </div>
@@ -55,11 +61,11 @@ export default function ProductDetail(){
            
             <QuantitySelector onDecrement={decrementQuantity} onIncrement={incrementQuantity} quantity={quantity} imgRemove={removeBtn} imgAdd={addBtn} ></QuantitySelector>
             <div className='product-details-add-to-cart-button'> 
-                <Button variant='primary-black' size='medium-inter' >ADD TO CART {(parseFloat(product.price)*quantity).toFixed(2)} €</Button>
+                <Button onClick={()=>addToCart({...product, quantity})} variant='primary-black' size='medium-inter' >ADD TO CART {(parseFloat(product.price)*quantity).toFixed(2)} €</Button>
             </div>
            
             
-            <CartFooter onViewCart={()=>navigate('/cart')} variant='summary'></CartFooter>
+            <CartFooter totalPrice={totalPrice.toFixed(2)} nbItems={nbItems} onViewCart={()=>navigate('/cart')} variant='summary'></CartFooter>
         </div>
     )
 }

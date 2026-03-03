@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { CartProvider } from './Context/CartContext';
 import {Routes, Route} from 'react-router-dom'
 import StartScreen from './components/StartScreen';
 import ServiceChoice from './components/ServiceChoice';
@@ -11,14 +11,17 @@ import Confirmation from './components/Confirmation';
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<StartScreen />} />
-      <Route path='/service-choice' element={<ServiceChoice />}/>
-      <Route path='/menu' element={<Menu />}/>
-      <Route path='/product-detail/:id' element={<ProductDetail />}/>
-      <Route path='/cart' element={<Cart />}></Route>
-      <Route path='/confirmation' element={<Confirmation />}></Route>
-    </Routes>
+  
+    <CartProvider>
+      <Routes>
+        <Route path='/' element={<StartScreen />} />
+        <Route path='/service-choice' element={<ServiceChoice />}/>
+        <Route path='/menu' element={<Menu />}/>
+        <Route path='/product-detail/:id' element={<ProductDetail />}/>
+        <Route path='/cart' element={<Cart />}></Route>
+        <Route path='/confirmation' element={<Confirmation />}></Route>
+      </Routes>
+    </CartProvider>
   )
 }
 

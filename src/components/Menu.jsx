@@ -6,8 +6,14 @@ import { ProductCard } from 'matts-dinner-component-library'
 import { CartFooter } from 'matts-dinner-component-library'
 import { menuData } from '../data/menuData'
 import { useState } from 'react'
+import { useCart } from '../Context/CartContext'
 
 export default function Menu(){
+    const {cartItems} = useCart()
+    const nbItems = cartItems.reduce((total, item)=> total + item.quantity,0)
+    const totalPrice = cartItems.reduce((total,item)=>{
+        return total + parseFloat(item.price) * item.quantity
+    },0)
     const [activeCategory, setActiveCategory] = useState('burgers')
     const [activeIndex, setActiveIndex] = useState(0)
     const navigate = useNavigate()
@@ -15,7 +21,7 @@ export default function Menu(){
     
     return(
         <div className='menu-page-container'>
-            <Header onGoBack={()=>navigate('/service-choice')} showNavIcons={true}></Header>
+            <Header onViewCart={()=>navigate('/cart')} onGoBack={()=>navigate('/service-choice')} showNavIcons={true}></Header>
             <div className='category-tab'>
                 <CategoryTab onCategoryClick={setActiveCategory} activeIndex={activeIndex} onIndexClick={setActiveIndex} ></CategoryTab>
             </div>
@@ -35,7 +41,7 @@ export default function Menu(){
                 ))}
                 
             </div>
-            <CartFooter onViewCart={()=>navigate('/cart')} variant='summary'></CartFooter>
+            <CartFooter totalPrice={totalPrice.toFixed(2)} nbItems={nbItems} onViewCart={()=>navigate('/cart')} variant='summary'></CartFooter>
            
         </div>
     )
