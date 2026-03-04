@@ -15,6 +15,7 @@ import { useCart } from '../Context/CartContext'
 
 
 export default function ProductDetail(){
+    const [selectedOptions, setSelectedOptions] = useState([])
     const {cartItems, addToCart} = useCart()
     const nbItems = cartItems.reduce((total, item)=> total + item.quantity,0)
     const totalPrice = cartItems.reduce((total,item)=>{
@@ -55,13 +56,13 @@ export default function ProductDetail(){
                     <span>{product.ingredients}</span>
                 </div>
                 <div className='checkbox-container'> 
-                    {product.type && <Checkbox type={product.type}></Checkbox>}
+                    {product.type && <Checkbox type={product.type} onOptionsChange={setSelectedOptions}></Checkbox>}
                 </div>
             </div>
            
             <QuantitySelector onDecrement={decrementQuantity} onIncrement={incrementQuantity} quantity={quantity} imgRemove={removeBtn} imgAdd={addBtn} ></QuantitySelector>
             <div className='product-details-add-to-cart-button'> 
-                <Button onClick={()=>addToCart({...product, quantity})} variant='primary-black' size='medium-inter' >ADD TO CART {(parseFloat(product.price)*quantity).toFixed(2)} €</Button>
+                <Button onClick={()=>addToCart({...product, quantity, options: selectedOptions})} variant='primary-black' size='medium-inter' >ADD TO CART {(parseFloat(product.price)*quantity).toFixed(2)} €</Button>
             </div>
            
             

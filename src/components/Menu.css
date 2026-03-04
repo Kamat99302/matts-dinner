@@ -17,6 +17,8 @@
     grid-template-rows: 430px 430px;
     gap: 6.5em;
     margin-top: 7.5em;
+    overflow-y: auto;
+    max-height: 60rem;
 
 }
 

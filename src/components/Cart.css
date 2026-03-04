@@ -22,6 +22,11 @@
     gap: 2em;
 }
 
+.cart-articles-container{
+    overflow-y: auto;
+    max-height: 38rem;
+}
+
 .cart-subtotal-tax-container{
     display: flex;
     justify-content: space-between;

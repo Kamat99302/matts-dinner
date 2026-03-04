@@ -12,7 +12,7 @@ import { useCart } from '../Context/CartContext'
 
 
 export default function Cart(){
-    const {cartItems, clearCart} = useCart()
+    const {cartItems, clearCart, removeFromCart} = useCart()
     const navigate = useNavigate()
     const subTotal = cartItems.reduce((total,item)=>{
         return total + parseFloat(item.price) * item.quantity
@@ -25,22 +25,23 @@ export default function Cart(){
         <div className='cart-page-container'>
             <Header onGoBack={()=>navigate('/menu')} showNavIcons={true}></Header>
             <span className='title'>Your cart</span>
-
+            <div className='cart-articles-container'>
             {cartItems.map((item)=>(
                 <div className='cart-container' key={item.id}>
                 <CartItemCard 
                 imgAdd={addBtn} 
                 imgRemove={removeBtn}
                 deleteIcon={deleteImg} 
+                onDeleteItem={()=>removeFromCart(item.id)}
                 productImg={item.img}
                 productName={item.name} 
-                productOptions={'Medium+, bacon'}
+                productOptions={item.options.join(', ')}
                 productPrice={item.price}
                 quantity={item.quantity}>
                 </CartItemCard>
                 </div>
             ))}
-            
+            </div>
             
         <div className='cart-subtotal-tax-container'>
             <div className='cart-subtotal-tax-container-left'>

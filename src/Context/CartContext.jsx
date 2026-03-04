@@ -10,11 +10,15 @@ export function CartProvider({children}){
         
     }
 
+    function removeFromCart(id){
+        setCartItems((prev)=>prev.filter(item=>item.id !== id))
+    }
+
     function clearCart(){
         setCartItems([])
     }
     return(
-        <CartContext.Provider value={{cartItems, addToCart, clearCart}}> {/* Le drone qui va apporter les données a tous les composants */}
+        <CartContext.Provider value={{cartItems, addToCart, clearCart, removeFromCart}}> {/* Le drone qui va apporter les données a tous les composants */}
             {children}
         </CartContext.Provider>
     )
