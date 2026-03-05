@@ -4,6 +4,12 @@ const CartContext = createContext()
 
 export function CartProvider({children}){
     const [cartItems, setCartItems] = useState([])
+
+    const subTotal = cartItems.reduce((total,item)=>{
+        return total + parseFloat(item.price) * item.quantity
+    },0)
+    const tax = (subTotal * 0.1)
+    const total = (subTotal + tax)
    
     function addToCart(product){
         setCartItems((prev)=>[...prev, product])
@@ -17,8 +23,9 @@ export function CartProvider({children}){
     function clearCart(){
         setCartItems([])
     }
+
     return(
-        <CartContext.Provider value={{cartItems, addToCart, clearCart, removeFromCart}}> {/* Le drone qui va apporter les données a tous les composants */}
+        <CartContext.Provider value={{cartItems, addToCart, clearCart, removeFromCart, tax, subTotal, total}}> {/* Le drone qui va apporter les données a tous les composants */}
             {children}
         </CartContext.Provider>
     )

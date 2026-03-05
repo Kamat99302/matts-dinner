@@ -11,20 +11,17 @@ import { useCart } from '../Context/CartContext'
 
 
 
-export default function Cart(){
-    const {cartItems, clearCart, removeFromCart} = useCart()
-    const navigate = useNavigate()
-    const subTotal = cartItems.reduce((total,item)=>{
-        return total + parseFloat(item.price) * item.quantity
-    },0)
-    const tax = subTotal * 0.1
-    const total = subTotal + tax
 
+export default function Cart(){
+    const {cartItems, clearCart, removeFromCart, tax, subTotal, total} = useCart()
+    const navigate = useNavigate()
+  
     return(
         
         <div className='cart-page-container'>
             <Header onGoBack={()=>navigate('/menu')} showNavIcons={true}></Header>
-            <span className='title'>Your cart</span>
+            <span className='title'>
+                {cartItems.length === 0 ? 'Your cart is empty ': 'Your cart'}</span>
             <div className='cart-articles-container'>
             {cartItems.map((item)=>(
                 <div className='cart-container' key={item.id}>
@@ -59,11 +56,13 @@ export default function Cart(){
             <span>{total.toFixed(2)} €</span>
         </div>
         <div className='cart-complete-order-button'>
-            <Button variant='primary-black'
+            <Button 
+            disabled={cartItems.length === 0}
+            variant='primary-black'
             size='medium-bebas'
-            onClick={()=>{
+            onClick={()=>
                 navigate('/confirmation')
-                clearCart()}}
+                }
                 >Complete order</Button>
         </div>
             <CartFooter onClearCart={clearCart} onGoMenu={()=>navigate('/menu')} variant='cart'></CartFooter>
