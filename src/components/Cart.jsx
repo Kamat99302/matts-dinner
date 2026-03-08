@@ -8,20 +8,22 @@ import addBtn from '../assets/images/add-button.png'
 import removeBtn from '../assets/images/remove-button.png'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../Context/CartContext'
+import { useTranslation } from 'react-i18next'
+import i18n from '../i18n'
 
 
 
 
 export default function Cart(){
-    const {cartItems, clearCart, removeFromCart, tax, subTotal, total} = useCart()
+    const {cartItems, clearCart, removeFromCart, tax, subTotal, total, decrementQuantity, incrementQuantity} = useCart()
     const navigate = useNavigate()
-  
+    const {t} = useTranslation()
     return(
         
         <div className='cart-page-container'>
             <Header onGoBack={()=>navigate('/menu')} showNavIcons={true}></Header>
             <span className='title'>
-                {cartItems.length === 0 ? 'Your cart is empty ': 'Your cart'}</span>
+                {cartItems.length === 0 ? t('your_cart_empty'): t('your_cart')}</span>
             <div className='cart-articles-container'>
             {cartItems.map((item)=>(
                 <div className='cart-container' key={item.id}>
@@ -29,6 +31,8 @@ export default function Cart(){
                 imgAdd={addBtn} 
                 imgRemove={removeBtn}
                 deleteIcon={deleteImg} 
+                onDecrement={decrementQuantity} 
+                onIncrement={incrementQuantity}
                 onDeleteItem={()=>removeFromCart(item.id)}
                 productImg={item.img}
                 productName={item.name} 
@@ -42,8 +46,8 @@ export default function Cart(){
             
         <div className='cart-subtotal-tax-container'>
             <div className='cart-subtotal-tax-container-left'>
-                <span>Subtotal</span>
-                <span className='cart-subtotal-tax'>Tax (10%)</span>
+                <span>{t('sub_total')}</span>
+                <span className='cart-subtotal-tax'>{t('tax')} (10%)</span>
             </div>
             <div className='cart-subtotal-tax-container-right'>
                 <span className='cart-subtotal-subtotal'>{subTotal.toFixed(2)} €</span>
@@ -63,9 +67,9 @@ export default function Cart(){
             onClick={()=>
                 navigate('/confirmation')
                 }
-                >Complete order</Button>
+                >{t('complete_order')}</Button>
         </div>
-            <CartFooter onClearCart={clearCart} onGoMenu={()=>navigate('/menu')} variant='cart'></CartFooter>
+            <CartFooter onClearCart={clearCart} onGoMenu={()=>navigate('/menu')} variant='cart' onLanguageChange={(lang)=>i18n.changeLanguage(lang)}></CartFooter>
         </div> 
     )
 }

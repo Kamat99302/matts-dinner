@@ -5,17 +5,16 @@ import { CategoryTab } from 'matts-dinner-component-library'
 import { ProductCard } from 'matts-dinner-component-library'
 import { CartFooter } from 'matts-dinner-component-library'
 import { menuData } from '../data/menuData'
-import { useState } from 'react'
 import { useCart } from '../Context/CartContext'
 
 export default function Menu(){
-    const {cartItems} = useCart()
+    const {cartItems, activeCategory, setActiveCategory, activeIndex, setActiveIndex} = useCart()
     const nbItems = cartItems.reduce((total, item)=> total + item.quantity,0)
     const totalPrice = cartItems.reduce((total,item)=>{
         return total + parseFloat(item.price) * item.quantity
     },0)
-    const [activeCategory, setActiveCategory] = useState('burgers')
-    const [activeIndex, setActiveIndex] = useState(0)
+
+ 
     const navigate = useNavigate()
     const currentItems = menuData[activeCategory] || []
     
