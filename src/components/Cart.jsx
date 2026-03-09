@@ -35,8 +35,8 @@ export default function Cart(){
                 onIncrement={incrementQuantity}
                 onDeleteItem={()=>removeFromCart(item.id)}
                 productImg={item.img}
-                productName={item.name} 
-                productOptions={item.options.join(', ')}
+                productName={item.nameKey? t(item.nameKey) : item.name} 
+                productOptions={item.options.map((opt)=>t(opt)).join(', ')}
                 productPrice={item.price}
                 quantity={item.quantity}>
                 </CartItemCard>
@@ -69,7 +69,7 @@ export default function Cart(){
                 }
                 >{t('complete_order')}</Button>
         </div>
-            <CartFooter onClearCart={clearCart} onGoMenu={()=>navigate('/menu')} variant='cart' onLanguageChange={(lang)=>i18n.changeLanguage(lang)}></CartFooter>
+            <CartFooter onClearCart={clearCart} onGoMenu={()=>navigate('/menu')} variant='cart' onLanguageChange={(lang)=>i18n.changeLanguage(lang)} viewCartLabel={t('view_cart')} clearCartLabel={t('clear_cart')} menuLabel={t('menu')}></CartFooter>
         </div> 
     )
 }

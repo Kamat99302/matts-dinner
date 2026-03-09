@@ -2,6 +2,7 @@ import './StartScreen.css'
 import startScreenBg from '../assets/images/bg-startScreen.png'
 import { Button } from 'matts-dinner-component-library'
 import { useNavigate } from 'react-router-dom'
+
 export default function StartScreen(){
     const navigate = useNavigate()
     return(
@@ -18,6 +19,9 @@ export default function StartScreen(){
                     Touch to order
                 </Button>
             </div>
+            <div className='bottom-page-language-selector-container'>
+         
+        </div>
 
         </div>
         
