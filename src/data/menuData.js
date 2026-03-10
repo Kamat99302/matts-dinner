@@ -8,7 +8,7 @@ import swissBurger from './../assets/images/Burgers/swiss-burger.PNG'
 import teriyakiBurger from './../assets/images/Burgers/teriyaki-burger.PNG'
 
 import fries from './../assets/images/Sides/fries.PNG'
-import sweetPotatoesFries from './../assets/images/Sides/sweet-potatoes-fries.png'
+import sweetPotatoesFries from './../assets/images/Sides/sweet-potatoes-fries.PNG'
 import chickenNuggets from './../assets/images/Sides/chicken-nuggets.PNG'
 import onionRings from './../assets/images/Sides/onion-rings.PNG'
 import macAndCheese from './../assets/images/Sides/mac-and-cheese.PNG'
