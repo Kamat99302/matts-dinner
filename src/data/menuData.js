@@ -25,7 +25,7 @@ import lagerBeer from './../assets/images/Drinks/lager-beer.PNG'
 import mangoJuice from './../assets/images/Drinks/mango-juice.PNG'
 import lemonade from './../assets/images/Drinks/lemonade.PNG'
 
-import brownies from './../assets/images/Desserts/brownies.PNG'
+import brownies from './../assets/images/Desserts/Brownies.PNG'
 import cheseCake from './../assets/images/Desserts/cheese-cake.PNG'
 import churros from './../assets/images/Desserts/churros.PNG'
 import waffles from './../assets/images/Desserts/waffles.PNG'
