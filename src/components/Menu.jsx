@@ -14,7 +14,7 @@ export default function Menu(){
     const {t} = useTranslation()
     const categoriesKeys = ['burgers', 'sides', 'beverages', 'desserts']
     const categoryLabels = categoriesKeys.map((key)=>t(key))
-    const {cartItems, activeCategory, setActiveCategory, activeIndex, setActiveIndex} = useCart()
+    const {cartItems, activeCategory, setActiveCategory, activeIndex, setActiveIndex, clearCart} = useCart()
     const nbItems = cartItems.reduce((total, item)=> total + item.quantity,0)
     const totalPrice = cartItems.reduce((total,item)=>{
         return total + parseFloat(item.price) * item.quantity
@@ -26,7 +26,12 @@ export default function Menu(){
     
     return(
         <div className='menu-page-container'>
-            <Header onViewCart={()=>navigate('/cart')} onGoBack={()=>navigate('/service-choice')} showNavIcons={true}></Header>
+            <Header onViewCart={()=>navigate('/cart')}
+                onGoBack={()=>{
+                    navigate('/service-choice')
+                    clearCart()
+                }}
+                showNavIcons={true}></Header>
             <div className='category-tab'>
                 <CategoryTab 
                      categories={categoryLabels}
