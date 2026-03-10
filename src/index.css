@@ -13,3 +13,7 @@
 *, *::before, *::after {
   box-sizing: border-box; /* Crucial pour que les paddings ne déforment pas les cartes */
 }
+body {
+  margin: 0;
+  padding: 0;
+}

@@ -8,8 +8,23 @@ import Cart from './components/Cart';
 import 'matts-dinner-component-library/dist/matts-dinner-component-library.css';
 import './App.css'
 import Confirmation from './components/Confirmation';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    function adjustScale() {
+        const root = document.getElementById('root')
+        const scaleX = window.innerWidth / 1080
+        const scaleY = window.innerHeight / 1920
+        const scale = Math.min(scaleX, scaleY)
+        root.style.transform = `scale(${scale})`
+        root.style.visibility = 'visible'
+    }
+
+    adjustScale()
+    window.addEventListener('resize', adjustScale)
+    return () => window.removeEventListener('resize', adjustScale)
+}, [])
   return (
   
     <CartProvider>
