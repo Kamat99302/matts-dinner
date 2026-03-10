@@ -19,10 +19,6 @@ export default function StartScreen(){
                     Touch to order
                 </Button>
             </div>
-            <div className='bottom-page-language-selector-container'>
-         
-        </div>
-
         </div>
         
         

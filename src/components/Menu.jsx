@@ -32,6 +32,7 @@ export default function Menu(){
                      categories={categoryLabels}
                      onCategoryClick={() => {}} 
                      activeIndex={activeIndex} 
+                     // Utilise l'index au lieu du label traduit pour filtrer, car le label change selon la langue
                      onIndexClick={(index) => {
                          setActiveIndex(index)
                          setActiveCategory(categoriesKeys[index])
@@ -49,6 +50,7 @@ export default function Menu(){
                         showIcon={item.badge.showIcon}
                         badgeText={t(item.badge.text)}
                         img={item.img}
+                        // Les produits avec un nameKey sont traduits via i18n, les autres gardent leur nom anglais
                         productName= {item.nameKey? t(item.nameKey) : item.name}
                         productPrice= {item.price}/>
                 ))}

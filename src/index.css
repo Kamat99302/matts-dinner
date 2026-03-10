@@ -12,6 +12,7 @@
 
 *, *::before, *::after {
   box-sizing: border-box; /* Crucial pour que les paddings ne déforment pas les cartes */
+  -webkit-tap-highlight-color: transparent;
 }
 body {
   margin: 0;

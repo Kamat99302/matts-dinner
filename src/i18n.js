@@ -116,6 +116,15 @@ i18n.use(initReactI18next).init({
                 "bacon": "Bacon",
                 "cheese": "Cheese",
                 "chili": "Chili",
+
+                //CONFIRMATION
+                "order_confirmed": "Order confirmed!",
+                "order_number": "Order",
+                "total": "Total",
+                "estimated_time": "Estimated time: 10 minutes",
+                "wait_counter": "Please wait at the counter",
+                "new_order": "New order",
+
             }
         },
         fr: {
@@ -226,6 +235,13 @@ i18n.use(initReactI18next).init({
                 "lemon": "Citron",
                 "chocolate": "Chocolat",
                 "vanilla": "Vanille",
+
+                //CONFIRMATION
+                "order_confirmed": "Commande confirmée !",
+                "order_number": "Commande",
+                "estimated_time": "Temps estimé: 10 minutes",
+                "wait_counter": "Veuillez patienter au comptoir",
+                "new_order": "Commander",
             }
         }
     },

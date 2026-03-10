@@ -5,8 +5,13 @@ import { LanguageSelector } from 'matts-dinner-component-library';
 import successIcon from '../assets/images/success-icon.png'
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../Context/CartContext'
+import { useState } from 'react';
+import i18n from '../i18n'
+import { useTranslation } from 'react-i18next'
 
 export default function Confirmation(){
+    const {t} = useTranslation()
+    const [orderNumber] = useState(() => Math.floor(Math.random() * 901) + 100)
     const navigate = useNavigate()
     const {total, clearCart} = useCart()
     return(
@@ -15,23 +20,23 @@ export default function Confirmation(){
 
             <div className='order-confirmed-container'>
                 <img src={successIcon} className='success-icon'/>
-                <span className='order-confirmed-message'>Order confirmed!</span>
+                <span className='order-confirmed-message'>{t('order_confirmed')}</span>
             </div>
             <div className='order-confirmed-order-details-container'>
-                <span className='order-confirmed-order-details'>Order #1247</span>
-                <span className='order-confirmed-order-details'>Total: {total.toFixed(2)} €</span>
-                <span className='order-confirmed-order-details'>Estimated time: 10 minutes</span>
+                <span className='order-confirmed-order-details'>{t('order_number')} #{orderNumber}</span>
+                <span className='order-confirmed-order-details'>{total.toFixed(2)} €</span>
+                <span className='order-confirmed-order-details'>{t('estimated_time')}</span>
             </div>
             <div className='order-confirmed-instructions'>
-                <span>Please wait at the counter</span>
+                <span>{t('wait_counter')}</span>
             </div>
             <div className='confirmation-page-new-order-button'>
                 <Button variant='primary-black' size='xl' onClick={()=>{
                     clearCart()
-                    navigate('/service-choice')}}>New order</Button>
+                    navigate('/service-choice')}}>{t('new_order')}</Button>
             </div>
             <div className='bottom-page-language-selector-container'>
-                <LanguageSelector></LanguageSelector>
+                <LanguageSelector onLanguageChange={(lang)=>i18n.changeLanguage(lang)} />
             </div>
             
             

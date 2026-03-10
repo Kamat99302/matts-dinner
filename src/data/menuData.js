@@ -51,7 +51,7 @@ export const menuData = {
         {id: 13, name: "Mac & cheese", price: '3.90€', ingredients: 'ingredients_mac_and_cheese', img: macAndCheese, badge: {include: false}},
         {id: 14, name: "Pasta bolognese", nameKey:'pasta_bolognese', price: '3.80€', ingredients: 'ingredients_pasta_bolognese', img: pastaBolognese, badge: {include: false}},
         {id: 15, name: "Caesar salad", nameKey:'caesar_salad', price: '4.50€', ingredients: 'ingredients_caesar_salad', img: caesarSalad, badge: {include: false}},
-        {id: 16, name: "coleslaw", nameKey:'coleslaw', price: '2.50€', ingredients: 'ingredients_coleslaw ', img: colesaw, badge: {include: false}}
+        {id: 16, name: "Coleslaw", nameKey:'coleslaw', price: '2.50€', ingredients: 'ingredients_coleslaw ', img: colesaw, badge: {include: false}}
     ],
 
     beverages: [
@@ -62,7 +62,7 @@ export const menuData = {
         {id: 21, name: "Blond beer", nameKey:'blond_beer', ingredients: 'ingredients_blond_beer', price: '3.50€', img: blondBeer, badge: {include: false, showIcon: false}},
         {id: 22, name: "Lager beer", nameKey:'lager_beer', ingredients: 'ingredients_lager_beer', price: '3.00€', img: lagerBeer, badge: {include: false, showIcon: false}},
         {id: 23, name: "Mango juice", nameKey:'mango_juice', price: '2.90€', ingredients: 'ingredients_mango_juice', img: mangoJuice, badge: {include: false}, type:'cold-drink'},
-        {id: 24, name: "lemonade", nameKey:'lemonade', price: '2.50€', ingredients: 'ingredients_lemonade', img: lemonade, badge: {include: false}, type:'cold-drink'}
+        {id: 24, name: "Lemonade", nameKey:'lemonade', price: '2.50€', ingredients: 'ingredients_lemonade', img: lemonade, badge: {include: false}, type:'cold-drink'}
     ],
 
     desserts: [

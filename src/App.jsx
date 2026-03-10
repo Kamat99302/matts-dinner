@@ -11,6 +11,8 @@ import Confirmation from './components/Confirmation';
 import { useEffect } from 'react';
 
 function App() {
+
+  // Ajuste le scale de l'app (1080x1920) pour s'adapter à la taille de l'écran
   useEffect(() => {
     function adjustScale() {
         const root = document.getElementById('root')
@@ -20,7 +22,6 @@ function App() {
         root.style.transform = `scale(${scale})`
         root.style.visibility = 'visible'
     }
-
     adjustScale()
     window.addEventListener('resize', adjustScale)
     return () => window.removeEventListener('resize', adjustScale)
