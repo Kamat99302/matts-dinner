@@ -1,147 +1,112 @@
 # 🍔 Matt's Diner
 
-Application moderne de commande en borne pour restaurant, construite avec React et une bibliothèque de composants que j'ai concue pour ce projet.
+Application de borne de commande de restaurant développée en React pour un écran tactile kiosk (1080×1920). Consomme ma [component library](https://github.com/Kamat99302/Matt-s-Dinner-Component-Library) publiée sur npm.
 
-## 📋 Présentation du projet
+---
 
-Matt's Diner est une interface de borne en libre-service conçue pour la commande en restaurant. L'application utilise une bibliothèque de composants professionnelle pour offrir une expérience de commande fluide.
+## Le projet
 
-## 🛠️ Stack Technique
+Matt's Diner est une interface de borne en libre-service pour la commande en restaurant, inspirée des bornes McDonald's/KFC. L'application propose un parcours complet : choix du service, navigation du menu, personnalisation des produits, gestion du panier et confirmation de commande, le tout en français et en anglais.
 
-- **React 19** - Framework frontend
-- **Vite** - Outil de build et serveur de développement
-- **Bibliothèque de composants personnalisée** - [matts-dinner-component-library](https://github.com/Kamat99302/Matt-s-Dinner-Component-Library)
-- **CSS3** 
+⚠️ **Interface Kiosque (1080×1920)**
 
-## ✨ Fonctionnalités
+Ce projet simule une borne de commande de restaurant.
 
-- Implémentation depuis le design Figma
-- Interface borne kiosk (optimisée 1080x1920)
-- Architecture de composants réutilisables
+**Meilleur affichage : Desktop.** L'app s'adapte aux autres écrans via un scaling dynamique.
 
-## 🚀 Démarrage
+---
 
-### Prérequis
+## Liens
 
-- Node.js (v18 ou supérieur)
-- npm ou yarn
+- **App live :** [Netlify](https://matts-dinner.netlify.app/)
+- **Code source :** [GitHub](https://github.com/Kamat99302/matts-dinner)
+- **Component Library :** [npm](https://www.npmjs.com/package/matts-dinner-component-library) | [GitHub](https://github.com/Kamat99302/Matt-s-Dinner-Component-Library) | [Storybook](https://component-library-mattsdinner.netlify.app/)
+- **Design Figma :** [Voir le design](https://www.figma.com/design/ceIg17J56YuNfSHVxKf4do/INTERFACE-DE-COMMANDE-KIOSK?node-id=0-1&t=J2B7rN6n1zAiqlx1-1)
 
-### Installation
+---
 
-1. **Cloner le repository**
-   ```bash
-   git clone https://github.com/[ton-username]/matts-dinner.git
-   cd matts-dinner
-   ```
+## Stack technique
 
-2. **Installer les dépendances**
-   ```bash
-   npm install
-   ```
+React 19 • React Router • Context API • react-i18next • Vite • CSS • npm • Netlify
 
-3. **Lier la bibliothèque de composants** (pour le développement local)
-   ```bash
-   # Dans le dossier de la bibliothèque
-   cd ../matts-dinner-component-library
-   npm link
+---
 
-   # Retour dans le dossier de l'app
-   cd ../matts-dinner
-   npm link matts-dinner-component-library
-   ```
+## Fonctionnalités
 
-4. **Démarrer le serveur de développement**
-   ```bash
-   npm run dev
-   ```
+- 6 pages avec routing dynamique (React Router)
+- Gestion de panier complète avec Context API (ajout, suppression, calcul sous-total, taxes, total)
+- Traduction FR/EN avec react-i18next (noms de produits, ingrédients, badges, options, UI)
+- 29 produits répartis en 4 catégories avec personnalisation par type (sauces, extras, options)
+- Numéro de commande aléatoire sur la page de confirmation
+- Animation bounce sur l'icône panier et scale sur les éléments interactifs
+- Scaling dynamique pour adaptation multi-écrans
+- Consomme la component library via npm
 
-5. **Ouvrir le navigateur**
-   ```
-   http://localhost:5173
-   ```
+---
 
-## 📁 Structure du projet
+## Architecture
+
+L'application consomme la [matts-dinner-component-library](https://www.npmjs.com/package/matts-dinner-component-library) via npm. Le state global est géré par Context API (panier, catégorie active). Les traductions sont gérées côté app avec react-i18next — la librairie reçoit les textes traduits via props, ce qui la garde indépendante.
 
 ```
 matts-dinner/
 ├── src/
-│   ├── assets/          # Images et fichiers statiques
-│   │   └── images/      # Images de fond, icônes
-│   ├── components/      # Composants React
-│   │   └── StartScreen/ # Composant page d'accueil
-│   ├── App.jsx          # Composant principal
-│   ├── App.css          # Styles globaux
-│   └── main.jsx         # Point d'entrée
-├── public/              # Assets publics
-├── package.json         # Dépendances et scripts
-└── vite.config.js       # Configuration Vite
+│   ├── assets/images/       # Images produits et icônes
+│   ├── components/
+│   │   ├── StartScreen.jsx  # Écran d'accueil
+│   │   ├── ServiceChoice.jsx # Choix sur place / à emporter
+│   │   ├── Menu.jsx         # Navigation menu par catégorie
+│   │   ├── ProductDetail.jsx # Détail produit avec options
+│   │   ├── Cart.jsx         # Panier avec récapitulatif
+│   │   └── Confirmation.jsx # Confirmation de commande
+│   ├── Context/
+│   │   └── CartContext.jsx  # State global (panier, catégories)
+│   ├── data/
+│   │   └── menuData.js     # 29 produits, 4 catégories
+│   ├── i18n.js             # Configuration traductions FR/EN
+│   ├── App.jsx             # Routes + scaling dynamique
+│   └── main.jsx            # Point d'entrée
+└── package.json
 ```
 
-## Design
+---
 
-L'application suit un design Figma réalisé par mes soins (https://www.figma.com/design/ceIg17J56YuNfSHVxKf4do/INTERFACE-DE-COMMANDE-KIOSK?node-id=0-1&t=J2B7rN6n1zAiqlx1-1)
+## Défis techniques résolus
 
-## Bibliothèque de composants
+**Séparation données / affichage pour la traduction**
+Les catégories traduites servaient de clé de filtrage, cassant l'affichage en FR. Solution : utiliser l'index au lieu du label traduit pour filtrer les produits.
 
-Ce projet utilise ma bibliothèque React qui inclut :
-- Button (multiples variantes et tailles)
-- Header
-- ProductCard
-- CartItemCard
-- LanguageSelector
-- QuantitySelector
-- Et plus encore...
+**Traduction sans coupler la librairie à i18n**
+Les textes traduits sont passés en props depuis l'app. La librairie utilise des fallbacks (`{viewCartLabel || 'VIEW CART'}`) et reste indépendante.
 
-[Voir la documentation de la bibliothèque](https://github.com/Kamat99302/Matt-s-Dinner-Component-Library)
+**Options traduites dans le panier**
+Les values des checkboxes sont des clés i18n. Dans le panier, chaque option est traduite dynamiquement avec `.map(opt => t(opt)).join(', ')`.
 
-## 🔧 Scripts disponibles
+**Déploiement avec component library**
+`npm link` ne fonctionne pas sur Netlify. Solution : publication de la librairie sur npm avec React en peerDependencies.
 
-### `npm run dev`
-Démarre le serveur de développement avec rechargement automatique
+**Scaling multi-écrans**
+L'app est designée pour 1080×1920. Un `useEffect` calcule le ratio de scaling et un viewport meta adapte l'affichage mobile.
 
-### `npm run build`
-Crée un build de production optimisé
+---
 
-### `npm run preview`
-Prévisualise le build de production localement
+## Démarrage
 
-### `npm run lint`
-Lance ESLint pour vérifier la qualité du code
+```bash
+git clone https://github.com/Kamat99302/matts-dinner.git
+cd matts-dinner
+npm install
+npm run dev
+```
 
-## Statut du développement
+---
 
-**Progression actuelle :**
-- ✅ Configuration et setup du projet
-- ✅ Intégration de la bibliothèque de composants
-- ✅ Implémentation de l'écran d'accueil
-- 🔄 Navigation du menu (en cours)
-- ⏳ Fonctionnalité panier (prévu)
-- ⏳ Récapitulatif de commande (prévu)
-- ⏳ Flux de paiement (prévu)
+## Scripts
 
-## 📝 Parcours d'apprentissage
+- `npm run dev` — Serveur de développement
+- `npm run build` — Build de production
+- `npm run preview` — Prévisualisation du build
 
-Ce projet fait partie de mon parcours d'apprentissage en tant qu'étudiant développeur frontend. Apprentissages clés :
-- Construction et distribution de bibliothèques de composants React
-- Configuration de bibliothèque (Vite, exports npm)
-- Gestion et bundling des assets
-- Composition et réutilisabilité des composants
-- Patterns React modernes (hooks, context, routing)
+---
 
-## 👨‍💻 Auteur
-
-**Matt** - Étudiant Développeur Frontend
-- Actuellement en Bachelor via ISCOD
-- Recherche alternance Développeur Frontend React (avril 2026)
-- [LinkedIn](https://www.linkedin.com/in/matthieu-juan-55568337a/)
-- [Portfolio](https://portfoliomattreact.netlify.app/)
-
-## 🤝 Contribution
-
-Ceci est un projet d'apprentissage, mais les retours et suggestions sont les bienvenus !
-
-## 📄 Licence
-
-Ce projet est à but éducatif.
-
-
+**Matt** • [Portfolio](https://portfoliomattreact.netlify.app/) • [LinkedIn](https://www.linkedin.com/in/matthieu-juan-55568337a/)
