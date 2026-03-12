@@ -1,5 +1,6 @@
 # 🍔 Matt's Diner
 
+![Description](./assets/images/matts-dinner-interface.PNG)
 Application de borne de commande de restaurant développée en React pour un écran tactile kiosk (1080×1920). Consomme ma [component library](https://github.com/Kamat99302/Matt-s-Dinner-Component-Library) publiée sur npm.
 
 ---
