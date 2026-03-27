@@ -6,7 +6,7 @@
 
 .service-choice-container h2{
     display: flex;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-inter);
     font-size: 4rem;
     align-items: center;
     justify-content: center;
@@ -51,12 +51,12 @@
 }
 
 .dine-in-title{
-    font-family: 'bebas neue', sans-serif;
+    font-family: var(--font-bebas);
     font-size: 6.25rem;  
 }
 
 .take-away-title{
-    font-family: 'bebas neue', sans-serif;
+    font-family: var(--font-bebas);
     font-size: 6.25rem;
     margin-top: .3em;
 }

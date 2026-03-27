@@ -18,7 +18,7 @@
 
 .product-details-name-price{
     display: flex;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-inter);
     font-size: 2.63rem;
     font-weight: 600;
     gap: 12rem;
@@ -27,7 +27,7 @@
 
 .product-details-ingredients{
     display: flex;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-inter);
     color: #808080;
     font-size: 1.68rem;
     font-weight: 600;

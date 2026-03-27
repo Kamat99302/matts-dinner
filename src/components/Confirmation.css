@@ -22,7 +22,7 @@
 }
 
 .order-confirmed-message{
-    font-family: 'Bebas Neue', sans-serif;
+    font-family: var(--font-bebas);
     font-size: 5.62rem;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .order-confirmed-order-details{
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-inter);
     font-size: 3.12rem;
    
 }
@@ -44,7 +44,7 @@
 .order-confirmed-instructions{
     display: flex;
     justify-content: center;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-inter);
     font-weight: bold;
     font-size: 3.12rem;
     padding-bottom: 7rem;
