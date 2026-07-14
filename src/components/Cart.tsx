@@ -15,10 +15,11 @@ import i18n from '../i18n'
 
 
 export default function Cart(){
-    const {cartItems, clearCart, removeFromCart, tax, subTotal, total, decrementQuantity, incrementQuantity} = useCart()
+    const {cartItems, clearCart, removeFromCart, tax, subTotal, total, decrementQuantity, incrementItemQuantity, decrementItemQuantity} = useCart()
     const navigate = useNavigate()
     const {t} = useTranslation()
     return(
+        
         
         <div className='cart-page-container'>
             <Header onGoBack={()=>navigate('/menu')} showNavIcons={true}></Header>
@@ -31,8 +32,8 @@ export default function Cart(){
                 imgAdd={addBtn} 
                 imgRemove={removeBtn}
                 deleteIcon={deleteImg} 
-                onDecrement={decrementQuantity} 
-                onIncrement={incrementQuantity}
+                onDecrement={()=>decrementItemQuantity(item.id)} 
+                onIncrement={()=>incrementItemQuantity(item.id)}
                 onDeleteItem={()=>removeFromCart(item.id)}
                 productImg={item.img}
                 productName={item.nameKey? t(item.nameKey) : item.name} 
@@ -69,7 +70,7 @@ export default function Cart(){
                 }
                 >{t('complete_order')}</Button>
         </div>
-            <CartFooter onClearCart={clearCart} onGoMenu={()=>navigate('/menu')} variant='cart' onLanguageChange={(lang)=>i18n.changeLanguage(lang)} viewCartLabel={t('view_cart')} clearCartLabel={t('clear_cart')} menuLabel={t('menu')}></CartFooter>
+            <CartFooter onClearCart={clearCart} onGoMenu={()=>navigate('/menu')} variant='cart' onLanguageChange={(lang:string)=>i18n.changeLanguage(lang)} viewCartLabel={t('view_cart')} clearCartLabel={t('clear_cart')} menuLabel={t('menu')}></CartFooter>
         </div> 
     )
 }

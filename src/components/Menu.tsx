@@ -8,11 +8,13 @@ import { menuData } from '../data/menuData'
 import { useCart } from '../Context/CartContext'
 import i18n from '../i18n'
 import { useTranslation } from 'react-i18next'
+import type { MenuCategory } from '../types'
+
 
 
 export default function Menu(){
     const {t} = useTranslation()
-    const categoriesKeys = ['burgers', 'sides', 'beverages', 'desserts']
+    const categoriesKeys: MenuCategory[] = ['burgers', 'sides', 'beverages', 'desserts']
     const categoryLabels = categoriesKeys.map((key)=>t(key))
     const {cartItems, activeCategory, setActiveCategory, activeIndex, setActiveIndex, clearCart} = useCart()
     const nbItems = cartItems.reduce((total, item)=> total + item.quantity,0)
@@ -38,9 +40,13 @@ export default function Menu(){
                      onCategoryClick={() => {}} 
                      activeIndex={activeIndex} 
                      // Utilise l'index au lieu du label traduit pour filtrer, car le label change selon la langue
-                     onIndexClick={(index) => {
+                     onIndexClick={(index: number) => {
+                        const category = categoriesKeys[index]
+                        if (!category){
+                            return
+                        }
                          setActiveIndex(index)
-                         setActiveCategory(categoriesKeys[index])
+                         setActiveCategory(category)
                      }} 
                 ></CategoryTab>
             </div>
@@ -53,7 +59,7 @@ export default function Menu(){
                         badgeColor={item.badge.color}
                         badgeVariant={item.badge.variant}
                         showIcon={item.badge.showIcon}
-                        badgeText={t(item.badge.text)}
+                        badgeText={item.badge.text? t(item.badge.text) :''}
                         img={item.img}
                         // Les produits avec un nameKey sont traduits via i18n, les autres gardent leur nom anglais
                         productName= {item.nameKey? t(item.nameKey) : item.name}
@@ -61,7 +67,7 @@ export default function Menu(){
                 ))}
                 
             </div>
-            <CartFooter onLanguageChange={(lang)=>i18n.changeLanguage(lang)} totalPrice={totalPrice.toFixed(2)} nbItems={nbItems} onViewCart={()=>navigate('/cart')} variant='summary' viewCartLabel={t('view_cart')} clearCartLabel={t('clear_cart')}></CartFooter>
+            <CartFooter onLanguageChange={(lang:string)=>i18n.changeLanguage(lang)} totalPrice={totalPrice.toFixed(2)} nbItems={nbItems} onViewCart={()=>navigate('/cart')} variant='summary' viewCartLabel={t('view_cart')} clearCartLabel={t('clear_cart')}></CartFooter>
            
         </div>
     )

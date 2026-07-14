@@ -12,7 +12,7 @@ export type MenuItem = {
 export type Badge = {
     include: boolean
     color?: "yellow" | "green"
-    text?: "popular" | "new"
+    text?: "popular" | "new" 
     showIcon?: boolean
     variant?: "square"
 }
@@ -22,7 +22,7 @@ export type CartItem = MenuItem & {
     options: string[]
 }
 
-export type MenuCategory = 'burgers' | 'sides' | 'beverages' | 'desserts'
+export type MenuCategory = 'burgers' | 'sides' | 'beverages' | 'desserts' 
 
 export type CartContextType = {
     cartItems: CartItem[]
@@ -36,4 +36,10 @@ export type CartContextType = {
     setActiveCategory: (activeCategory: MenuCategory) => void
     activeIndex: number
     setActiveIndex: (activeIndex:number) => void
+    quantity: number
+    incrementQuantity: () => void
+    decrementQuantity: () => void
+    incrementItemQuantity: (id:number) => void
+    decrementItemQuantity: (id:number) => void
+
 }

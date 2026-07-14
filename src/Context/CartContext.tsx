@@ -5,6 +5,7 @@ const CartContext = createContext<CartContextType | undefined> (undefined)
 
 export function CartProvider({children}:{children: ReactNode}){
     const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const [quantity, setQuantity] = useState(1)
     const [activeCategory, setActiveCategory] = useState<MenuCategory>('burgers')
     const [activeIndex, setActiveIndex] = useState(0)
     const subTotal = cartItems.reduce((total,item)=>{
@@ -24,9 +25,36 @@ export function CartProvider({children}:{children: ReactNode}){
     function clearCart(){
         setCartItems([])
     }
+    
+    function incrementQuantity(){
+        if (quantity === 5){
+            return
+        }
+        setQuantity(prev=>prev + 1)
+    }
+
+    function decrementQuantity(){
+        if (quantity === 1){
+            return
+        }
+        setQuantity(prev=>prev - 1)
+    }
+
+    function incrementItemQuantity(id: number) {
+        setCartItems(prev => prev.map(item => 
+            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        ))
+    }
+
+    function decrementItemQuantity(id: number) {
+        setCartItems(prev => prev.map(item => 
+            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+        ))
+    }
+    
 
     return(
-        <CartContext.Provider value={{cartItems, addToCart, clearCart, removeFromCart, tax, subTotal, total, activeCategory, setActiveCategory, activeIndex, setActiveIndex}}> {/* Le drone qui va apporter les données a tous les composants */}
+        <CartContext.Provider value={{cartItems, addToCart, clearCart, removeFromCart, tax, subTotal, total, activeCategory, setActiveCategory, activeIndex, setActiveIndex, quantity, incrementQuantity, decrementQuantity, incrementItemQuantity, decrementItemQuantity}}> {/* Le drone qui va apporter les données a tous les composants */}
             {children}
         </CartContext.Provider>
     )

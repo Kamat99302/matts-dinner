@@ -26,32 +26,23 @@ export default function ProductDetail(){
         add_ice: t('add_ice'),
         add_lemon: t('add_lemon')
     }
-    const [selectedOptions, setSelectedOptions] = useState([])
-    const {cartItems, addToCart} = useCart()
+    const [selectedOptions, setSelectedOptions] = useState<string[]>([])
+    const {cartItems, addToCart, quantity, incrementQuantity, decrementQuantity} = useCart()
     const nbItems = cartItems.reduce((total, item)=> total + item.quantity,0)
     const totalPrice = cartItems.reduce((total,item)=>{
         return total + parseFloat(item.price) * item.quantity
     },0)
     const navigate = useNavigate()
-    const [quantity, setQuantity] = useState(1)
+    
     const { id } = useParams()
     const allItems = Object.values(menuData) //transforme l'objet menuData en tableau. Crée un tableau de tableaux
                     .flat() //applatis en tableau simple
     const product = allItems.find(item=>item.id === Number(id)) //cherche les produits correspondant à l'id de l'url
-
-    function incrementQuantity(){
-        if (quantity === 5){
-            return
-        }
-        setQuantity(prev=>prev + 1)
+    if (!product){
+        throw new Error ('Product is undefined')
     }
 
-    function decrementQuantity(){
-        if (quantity === 1){
-            return
-        }
-        setQuantity(prev=>prev - 1)
-    }
+    
     return(
         <div className='product-detail-page-container'>
             <Header onViewCart={()=>navigate('/cart')} onGoBack={()=>navigate('/menu')} showNavIcons={true}></Header>
@@ -77,7 +68,7 @@ export default function ProductDetail(){
             </div>
            
             
-            <CartFooter onLanguageChange={(lang)=>i18n.changeLanguage(lang)} totalPrice={totalPrice.toFixed(2)} nbItems={nbItems} onViewCart={()=>navigate('/cart')} variant='summary' viewCartLabel={t('view_cart')}></CartFooter>
+            <CartFooter onLanguageChange={(lang:string)=>i18n.changeLanguage(lang)} totalPrice={totalPrice.toFixed(2)} nbItems={nbItems} onViewCart={()=>navigate('/cart')} variant='summary' viewCartLabel={t('view_cart')}></CartFooter>
         </div>
     )
 }

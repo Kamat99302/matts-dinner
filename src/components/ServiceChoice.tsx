@@ -28,7 +28,7 @@ export default function ServiceChoice(){
             </div>
         </div>
         <div className='bottom-page-language-selector-container'>
-            <LanguageSelector onLanguageChange={(lang)=>i18n.changeLanguage(lang)}></LanguageSelector>
+            <LanguageSelector onLanguageChange={(lang:string)=>i18n.changeLanguage(lang)}></LanguageSelector>
         </div>
         </>
         
