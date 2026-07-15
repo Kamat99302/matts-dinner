@@ -40,18 +40,38 @@ export function CartProvider({children}:{children: ReactNode}){
         setQuantity(prev=>prev - 1)
     }
 
-    function incrementItemQuantity(id: number) {
-        setCartItems(prev => prev.map(item => 
-            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-        ))
+    function decrementItemQuantity(id: number) {
+        setCartItems(prev =>
+             prev.map(item => {
+                if (item.id !== id){
+                    return item
+                }
+
+                if (item.quantity > 1 ){
+                    return { ...item, quantity: item.quantity - 1 }
+                }          
+                return item
+             }
+    ))
     }
 
-    function decrementItemQuantity(id: number) {
-        setCartItems(prev => prev.map(item => 
-            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-        ))
+
+    function incrementItemQuantity(id: number) {
+        setCartItems(prev =>
+             prev.map(item => {
+                if (item.id !== id){
+                    return item
+                }
+
+                if (item.quantity < 5 ){
+                    return { ...item, quantity: item.quantity + 1 }
+                }
+                return item
+             }
+    ))
     }
-    
+
+
 
     return(
         <CartContext.Provider value={{cartItems, addToCart, clearCart, removeFromCart, tax, subTotal, total, activeCategory, setActiveCategory, activeIndex, setActiveIndex, quantity, incrementQuantity, decrementQuantity, incrementItemQuantity, decrementItemQuantity}}> {/* Le drone qui va apporter les données a tous les composants */}

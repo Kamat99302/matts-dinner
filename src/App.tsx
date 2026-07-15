@@ -19,6 +19,8 @@ function App() {
         const scaleX = window.innerWidth / 1080
         const scaleY = window.innerHeight / 1920
         const scale = Math.min(scaleX, scaleY)
+
+        if (!root) return
         root.style.transform = `scale(${scale})`
         root.style.visibility = 'visible'
     }
