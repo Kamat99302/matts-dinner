@@ -36,7 +36,7 @@ export default function Confirmation(){
                     navigate('/service-choice')}}>{t('new_order')}</Button>
             </div>
             <div className='bottom-page-language-selector-container'>
-                <LanguageSelector onLanguageChange={(lang)=>i18n.changeLanguage(lang)} />
+                <LanguageSelector onLanguageChange={(lang: string)=>i18n.changeLanguage(lang)} />
             </div>
             
             
